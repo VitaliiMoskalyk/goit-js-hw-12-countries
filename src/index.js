@@ -31,8 +31,6 @@ function fetchingByFullName(dataAPI, name) {
                 countryContainerRef.innerHTML = listTemplate({ arr });
             }
             else countryContainerRef.innerHTML = menuTemplate(...country);
-           
-          
         })
         .catch(() => countryContainerRef.innerHTML = '')
 };
