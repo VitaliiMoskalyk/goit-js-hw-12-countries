@@ -28,14 +28,13 @@ function fetchingByFullName(dataAPI, name) {
             if (country.length > 1) {
                 const arr = [];
                 country.forEach((el) => arr.push(el.name));
-            
                 countryContainerRef.innerHTML = listTemplate({ arr });
-
             }
             else countryContainerRef.innerHTML = menuTemplate(...country);
            
           
-}).catch(()=>countryContainerRef.innerHTML = '')
+        })
+        .catch(() => countryContainerRef.innerHTML = '')
 };
 
 
