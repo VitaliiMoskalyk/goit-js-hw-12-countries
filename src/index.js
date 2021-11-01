@@ -30,10 +30,12 @@ function clearInput() {
 
 function fetchingByFullName(dataAPI, name) {
     fetch(`${dataAPI}/${name}`)
-        .then(response => response.json())
+        .then(response =>{ if (!response.ok) {
+throw new Error(response.status);
+}
+return response.json();})
         .then(country => {
             if (country.length > 1) {
-                console.dir(country)
                 const arr = findFistNElemOfArray(country,10);
                 countryContainerRef.innerHTML = listTemplate({ arr });
             }
@@ -46,7 +48,7 @@ function fetchingByFullName(dataAPI, name) {
             if (country.message === "Page Not Found") countryContainerRef.innerHTML = '';
         })
         
-        .catch(() => { countryContainerRef.innerHTML = '';});
+        .catch((error) => { countryContainerRef.innerHTML = '';});
 };
 
 
